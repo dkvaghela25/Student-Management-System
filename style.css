@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    background-color: #F0EBF8;
+}
+
+body {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.google-form{
+    width: 50%;
+    margin-top: 20px;
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: white;
+}
+
+.main-heading {
+    font-size: 32px;
+    font-weight: 400;
+    color: rgb(32, 33, 36);
+    border-top: 10px solid #673AB7;
+    font-family: "Roboto", sans-serif;
+    padding: 10px 20px;
+}
