@@ -25,37 +25,37 @@
             <hr>
             <div style="color: #d93025;">* Indicates required question</div>
         </div>
-        <form id="main-form" action="">
+        <form id="main-form" action="" onsubmit="Submit(event)">
             <div id="personal-details">
                 <div class="white-bg box-layout">
                     <label class="required" for=""><span>Full Name</span><span>*</span></label>
-                    <input type="text" placeholder="Entet your full name">
+                    <input type="text" name="fullName" placeholder="Entet your full name">
                 </div>
                 <div class="white-bg box-layout">
                     <label class="required" for=""><span>Email ID</span><span>*</span></label>
-                    <input type="text" placeholder="Entet your email id">
+                    <input type="text" name="emailID" placeholder="Entet your email id">
                 </div>
                 <div class="white-bg box-layout">
                     <label class="required" for=""><span>Number of students</span><span>*</span></label>
-                    <input id="total-students" style="width: 20%;" type="number" value="1" min="1">
+                    <input id="total-students" name="totalStudents" style="width: 20%;" type="number" value="1" min="1">
                 </div>
             </div>
             <div id="student-1-details" hidden>
                 <div class="white-bg box-layout">
                     <label class="required" for=""><span>Full Name</span><span>*</span></label>
-                    <input type="text" placeholder="Entet your full name">
+                    <input type="text" name="fullName-1" placeholder="Entet your full name">
                 </div>
                 <div class="white-bg box-layout">
                     <label class="required" for=""><span>Email ID</span><span>*</span></label>
-                    <input type="text" placeholder="Entet your email id">
+                    <input type="text" name="emailID-1" placeholder="Entet your email id">
                 </div>
                 <div class="white-bg box-layout">
                     <label class="required" for=""><span>Phone no.</span><span>*</span></label>
-                    <input type="text" placeholder="Entet your phone no.">
+                    <input type="text" name="phoneNo-1" placeholder="Entet your phone no.">
                 </div>
                 <div class="white-bg box-layout">
                     <label class="required" for=""><span>Branch</span><span>*</span></label>
-                    <select id="branch" name="branch">
+                    <select id="Branch" name="branch-1">
                         <option value="Computer Science">Computer Science</option>
                         <option value="Information Technology">Information Technology</option>
                         <option value="Electrical">Electrical</option>
@@ -66,26 +66,26 @@
                     <label class="required" for=""><span>Divison</span><span>*</span></label>
                     <!-- <input type="text" placeholder="Entet your email id"> -->
                     <div class="radiobtn">
-                        <input type="radio" id="diva" name="divison" value="A">
+                        <input type="radio" id="diva" name="Divison" value="A">
                         <label for="diva">Divison A</label>
                     </div>
                     <div class="radiobtn">
-                        <input type="radio" id="divb" name="divison" value="B">
+                        <input type="radio" id="divb" name="Divison" value="B">
                         <label for="divb">Divison B</label>
                     </div>
                 </div>
                 <div class="white-bg box-layout">
                     <label class="required" for=""><span>Enrolment No.</span><span>*</span></label>
-                    <input type="text">
+                    <input type="text" name="enrolmentNo-1">
                 </div>
             </div>
+            <div class="buttons">
+                <input id="submit" type="submit">
+                <button id="back">Back</button>
+                <button id="next">Next</button>
+                <button id="clear">Clear form</button>
+            </div>
         </form>
-        <div class="buttons">
-            <button id="submit">Submit</button>
-            <button id="back" onclick="Back()">Back</button>
-            <button id="next" onclick="Next()">Next</button>
-            <button id="clear">Clear form</button>
-        </div>
         <script src="script.js"></script>
     </div>
 </body>

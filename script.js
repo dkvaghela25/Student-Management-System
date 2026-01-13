@@ -19,7 +19,9 @@ let formElements = mainForm.children;
 formElements = [...formElements];
 console.log(formElements);
 
-const Next = () => {
+const Next = (event) => {
+
+    event.preventDefault();
 
     const currentElement = formElements.find(element => !(element.hidden))
     const currentElementID = currentElement.getAttribute("id")
@@ -31,18 +33,21 @@ const Next = () => {
         let totalStudents = document.getElementById("total-students").value;
         console.log(`Total Students : ${totalStudents}`);
         console.log(`formElements.length : ${formElements.length}`);
-        if (totalStudents != formElements.length - 1) {
+        if (totalStudents != formElements.length - 2) {
+            console.log(`Upadting ===========================================================`);
             updateStudentForms(totalStudents);
         }
         goto(1);
     } else {
         let i = Number(currentElementID.split("-")[1])
-        goto(i+1)
+        goto(i + 1)
     }
 
 }
 
-const Back = () => {
+const Back = (event) => {
+
+    event.preventDefault();
 
     const currentElement = formElements.find(element => !(element.hidden))
     const currentElementID = currentElement.getAttribute("id")
@@ -54,10 +59,25 @@ const Back = () => {
         goto(0);
     } else {
         let i = Number(currentElementID.split("-")[1])
-        goto(i-1)
+        goto(i - 1)
     }
 
 }
+
+const Submit = (event) => {
+    event.preventDefault();
+
+    const dataObj = {}
+    console.log(event.target);
+    const formData = new FormData(event.target)
+    const obj = Object.fromEntries(formData.entries());
+    
+    console.log(obj);
+    
+}
+
+nextBtn.addEventListener('click', Next)
+backBtn.addEventListener('click', Back)
 
 const goto = (n) => {
 
@@ -67,10 +87,10 @@ const goto = (n) => {
 
     let id = (n == 0) ? `personal-details` : `student-${n}-details`
     let nextElement = document.getElementById(id);
-    
+
     nextElement.hidden = false;
 
-    if(formElements.length - 1 == n) {
+    if (formElements.length - 2 == n) {
         nextBtn.hidden = true;
         submitBtn.hidden = false;
     } else {
@@ -78,7 +98,7 @@ const goto = (n) => {
         submitBtn.hidden = true;
     }
 
-    if(n == 0){
+    if (n == 0) {
         backBtn.hidden = true;
     } else {
         backBtn.hidden = false;
@@ -86,19 +106,26 @@ const goto = (n) => {
 }
 
 const updateStudentForms = (n) => {
-    const availableForms = formElements.length - 1;
+    const availableForms = formElements.length - 2;
 
     console.log(`required student forms ${n}`);
     console.log(`availableForms ${availableForms}`);
 
     if (availableForms < n) {
+        const buttons = document.getElementsByClassName("buttons")[0];
         const fragment = document.createDocumentFragment();
         for (let i = availableForms + 1; i <= n; i++) {
             const clone = templateForm.cloneNode(true);
             clone.setAttribute("id", `student-${i}-details`)
+            const inputElements = clone.querySelectorAll('[name]')
+            for (const element of inputElements) {
+                let name = element.name;
+                name = name.split("-")[0]
+                element.setAttribute("name",`${name}-${i}`)
+            }
             fragment.appendChild(clone)
         }
-        mainForm.appendChild(fragment);
+        mainForm.insertBefore(fragment, buttons);
     } else {
         for (let i = availableForms; i > n; i--) {
             console.log(`student-${i}-details`);
