@@ -1,18 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="google-form">
-        <div class="heading">
+    <div class="google-form box-layout">
+        <div class="white-bg box-layout heading">
             <div class="main-heading">Student Management Form</div>
+            <hr>
             <div class="instructions">
+                <h3 style="font-weight: 500;">Instructions : </h3>
+                <ul>
+                    <li>First fill out details about your self</li>
+                    <li>Select how many student's should be there in your form (atlest one is required)</li>
+                    <li>Fill details of every student</li>
+                    <li>For student image image's size should be maximum 1mb </li>
+                </ul>
             </div>
+            <hr>
+            <div style="color: #d93025;">* Indicates required question</div>
         </div>
+        <form id="main-form" action="">
+            <div id="personal-details">
+                <div class="white-bg box-layout">
+                    <label class="required" for=""><span>Full Name</span><span>*</span></label>
+                    <input type="text" placeholder="Entet your full name">
+                </div>
+                <div class="white-bg box-layout">
+                    <label class="required" for=""><span>Email ID</span><span>*</span></label>
+                    <input type="text" placeholder="Entet your email id">
+                </div>
+                <div class="white-bg box-layout">
+                    <label class="required" for=""><span>Number of students</span><span>*</span></label>
+                    <input id="total-students" style="width: 20%;" type="number" value="1" min="1">
+                </div>
+            </div>
+            <div id="student-1-details" hidden>
+                <div class="white-bg box-layout">
+                    <label class="required" for=""><span>Full Name</span><span>*</span></label>
+                    <input type="text" placeholder="Entet your full name">
+                </div>
+                <div class="white-bg box-layout">
+                    <label class="required" for=""><span>Email ID</span><span>*</span></label>
+                    <input type="text" placeholder="Entet your email id">
+                </div>
+                <div class="white-bg box-layout">
+                    <label class="required" for=""><span>Phone no.</span><span>*</span></label>
+                    <input type="text" placeholder="Entet your phone no.">
+                </div>
+                <div class="white-bg box-layout">
+                    <label class="required" for=""><span>Branch</span><span>*</span></label>
+                    <select id="branch" name="branch">
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Information Technology">Information Technology</option>
+                        <option value="Electrical">Electrical</option>
+                        <option value="Mechanical">Mechanical</option>
+                    </select>
+                </div>
+                <div class="white-bg box-layout">
+                    <label class="required" for=""><span>Divison</span><span>*</span></label>
+                    <!-- <input type="text" placeholder="Entet your email id"> -->
+                    <div class="radiobtn">
+                        <input type="radio" id="diva" name="divison" value="A">
+                        <label for="diva">Divison A</label>
+                    </div>
+                    <div class="radiobtn">
+                        <input type="radio" id="divb" name="divison" value="B">
+                        <label for="divb">Divison B</label>
+                    </div>
+                </div>
+                <div class="white-bg box-layout">
+                    <label class="required" for=""><span>Enrolment No.</span><span>*</span></label>
+                    <input type="text">
+                </div>
+            </div>
+        </form>
+        <div class="buttons">
+            <button id="submit">Submit</button>
+            <button id="back" onclick="Back()">Back</button>
+            <button id="next" onclick="Next()">Next</button>
+            <button id="clear">Clear form</button>
+        </div>
+        <script src="script.js"></script>
     </div>
 </body>
+
 </html>
