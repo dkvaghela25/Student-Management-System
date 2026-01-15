@@ -9,13 +9,11 @@ const nextBtn = document.getElementById("next")
 const backBtn = document.getElementById("back")
 const submitBtn = document.getElementById("submit")
 const clearBtn = document.getElementById("clear")
-const printBtn = document.getElementById("print")
 
 const studentTable = document.getElementById("student-table");
 
 submitBtn.hidden = true;
 backBtn.hidden = true;
-printBtn.hidden = true;
 
 const templateForm = document.getElementById("student-1-details")
 
@@ -192,6 +190,5 @@ const generateStudentTable = (students) => {
 
     mainForm.hidden = true;
     studentTable.hidden = false;
-    printBtn.hidden = false;
-
+    
 }
