@@ -166,29 +166,28 @@ const updateStudentForms = (n) => {
 }
 
 const generateStudentTable = (students) => {
-    const defaultProfilePicture = 'https://res.cloudinary.com/dycqdhycj/image/upload/v1744885687/default-profile-picture_lrivmz.png'
-    
-    const tempStudent = studentTable.getElementsByClassName("student")[0];
-    
-    for (const [key, value] of Object.entries(students)) {
-        const clone = tempStudent.cloneNode(true);
-        const dynamicValues = clone.querySelectorAll('[class]')
+    console.log('generateStudentTable');
+    console.log(students);
 
-        for (const element of dynamicValues) {
-            let className = element.classList[0];
-            if(className == 'profile-img') {
-                element.src = value[className] || defaultProfilePicture;
-            } else {
-                element.innerHTML = value[className]
-            }
-        }
+    const mainTable = document.getElementById("main-table");
+    let mainContent = '<tr><th>ID</th><th>Full Name</th><th>Email ID</th><th>Phone No.</th><th>Branch</th><th>Divison</th><th>Enrolment No.</th></tr>';
 
-        studentTable.appendChild(clone);
+    for (const [key,value] of Object.entries(students)) {
+        console.log(key);
+        console.log(value);
+        mainContent += `<tr>`                                               
+        mainContent += `<td>${key.split('-')[1]}</td>`                      
+        mainContent += `<td>${value.fullName}</td>`                      
+        mainContent += `<td>${value.emailID}</td>`                      
+        mainContent += `<td>${value.phoneNo}</td>`                      
+        mainContent += `<td>${value.branch}</td>`                      
+        mainContent += `<td>${value.divison}</td>`                      
+        mainContent += `<td>${value.enrolmentNo}</td>`                      
+        mainContent += `<tr>`                                               
     }
 
-    tempStudent.remove();
+    mainTable.innerHTML = mainContent;
 
     mainForm.hidden = true;
-    studentTable.hidden = false;
-    
+    studentTable.hidden = false
 }

@@ -168,3 +168,12 @@ input[type=submit] {
 .student > div > div {
     padding: 5px;
 }
+
+table{
+    border-collapse: collapse;
+}
+
+td, th {
+    padding: 2px;
+    border: 1px solid black;
+}
