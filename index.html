@@ -9,8 +9,8 @@
 </head>
 
 <body>
-    <div class="google-form box-layout">
-        <div class="white-bg box-layout heading">
+    <div class="google-form">
+        <div class="box-layout heading">
             <div class="main-heading">Student Management Form</div>
             <hr>
             <div class="instructions">
@@ -27,33 +27,33 @@
         </div>
         <form id="main-form" action="" onsubmit="Submit(event)">
             <div id="personal-details">
-                <div class="white-bg box-layout">
+                <div class="box-layout">
                     <label class="required" for=""><span>Full Name</span><span>*</span></label>
                     <input type="text" name="fullName" placeholder="Entet your full name">
                 </div>
-                <div class="white-bg box-layout">
+                <div class="box-layout">
                     <label class="required" for=""><span>Email ID</span><span>*</span></label>
                     <input type="text" name="emailID" placeholder="Entet your email id">
                 </div>
-                <div class="white-bg box-layout">
+                <div class="box-layout">
                     <label class="required" for=""><span>Number of students</span><span>*</span></label>
                     <input id="total-students" name="totalStudents" style="width: 20%;" type="number" value="1" min="1">
                 </div>
             </div>
             <div id="student-1-details" hidden>
-                <div class="white-bg box-layout">
+                <div class="box-layout">
                     <label class="required" for=""><span>Full Name</span><span>*</span></label>
                     <input type="text" name="fullName-1" placeholder="Entet your full name">
                 </div>
-                <div class="white-bg box-layout">
+                <div class="box-layout">
                     <label class="required" for=""><span>Email ID</span><span>*</span></label>
                     <input type="text" name="emailID-1" placeholder="Entet your email id">
                 </div>
-                <div class="white-bg box-layout">
+                <div class="box-layout">
                     <label class="required" for=""><span>Phone no.</span><span>*</span></label>
                     <input type="text" name="phoneNo-1" placeholder="Entet your phone no.">
                 </div>
-                <div class="white-bg box-layout">
+                <div class="box-layout">
                     <label class="required" for=""><span>Branch</span><span>*</span></label>
                     <select id="Branch" name="branch-1">
                         <option value="Computer Science">Computer Science</option>
@@ -62,19 +62,18 @@
                         <option value="Mechanical">Mechanical</option>
                     </select>
                 </div>
-                <div class="white-bg box-layout">
+                <div class="box-layout">
                     <label class="required" for=""><span>Divison</span><span>*</span></label>
-                    <!-- <input type="text" placeholder="Entet your email id"> -->
                     <div class="radiobtn">
-                        <input type="radio" id="diva" name="Divison" value="A">
+                        <input type="radio" id="diva" name="divison-1" value="A">
                         <label for="diva">Divison A</label>
                     </div>
                     <div class="radiobtn">
-                        <input type="radio" id="divb" name="Divison" value="B">
+                        <input type="radio" id="divb" name="divison-1" value="B">
                         <label for="divb">Divison B</label>
                     </div>
                 </div>
-                <div class="white-bg box-layout">
+                <div class="box-layout">
                     <label class="required" for=""><span>Enrolment No.</span><span>*</span></label>
                     <input type="text" name="enrolmentNo-1">
                 </div>
@@ -86,6 +85,19 @@
                 <button id="clear">Clear form</button>
             </div>
         </form>
+        <div id="student-table" class="box-layout" hidden>
+            <div class="student">
+                <img class="profile-img" src="" alt="">
+                <div>
+                    <div>Full Name</div><div>:</div><div class="fullName">ABC</div>
+                    <div>Email ID.</div><div>:</div><div class="emailID">abc@gmail.com</div>
+                    <div>Phone No.</div><div>:</div><div class="phoneNo">9123456789</div>
+                    <div>Branch</div><div>:</div><div class="branch">Computer Science</div>
+                    <div>Divison</div><div>:</div><div class="divison">A</div>
+                    <div>Enrolment No.</div><div>:</div><div class="enrolmentNo">ABC1</div>
+                 </div>
+            </div>
+        </div>
         <script src="script.js"></script>
     </div>
 </body>

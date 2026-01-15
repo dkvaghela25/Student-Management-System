@@ -9,15 +9,22 @@ const nextBtn = document.getElementById("next")
 const backBtn = document.getElementById("back")
 const submitBtn = document.getElementById("submit")
 const clearBtn = document.getElementById("clear")
+const printBtn = document.getElementById("print")
+
+const studentTable = document.getElementById("student-table");
 
 submitBtn.hidden = true;
 backBtn.hidden = true;
+printBtn.hidden = true;
 
 const templateForm = document.getElementById("student-1-details")
+
 const mainForm = document.getElementById("main-form");
 let formElements = mainForm.children;
 formElements = [...formElements];
 console.log(formElements);
+
+
 
 const Next = (event) => {
 
@@ -68,12 +75,33 @@ const Submit = (event) => {
     event.preventDefault();
 
     const dataObj = {}
-    console.log(event.target);
     const formData = new FormData(event.target)
     const obj = Object.fromEntries(formData.entries());
-    
-    console.log(obj);
-    
+
+    dataObj.fullName = obj.fullName
+    dataObj.emailID = obj.emailID
+    dataObj.totalStudents = obj.totalStudents
+    dataObj.Students = {};
+
+    const Students = dataObj.Students
+
+    delete obj.fullName
+    delete obj.emailID
+    delete obj.totalStudents
+
+    for (let [key, value] of Object.entries(obj)) {
+        name = key.split("-")[0]
+        id = key.split("-")[1]
+        if (Students[`student-${id}`] === undefined) {
+            Students[`student-${id}`] = {};
+        }
+        Students[`student-${id}`][name] = value;
+    }
+
+    console.log(dataObj);
+
+    generateStudentTable(Students);
+
 }
 
 nextBtn.addEventListener('click', Next)
@@ -121,7 +149,7 @@ const updateStudentForms = (n) => {
             for (const element of inputElements) {
                 let name = element.name;
                 name = name.split("-")[0]
-                element.setAttribute("name",`${name}-${i}`)
+                element.setAttribute("name", `${name}-${i}`)
             }
             fragment.appendChild(clone)
         }
@@ -139,3 +167,31 @@ const updateStudentForms = (n) => {
     console.log(formElements);
 }
 
+const generateStudentTable = (students) => {
+    const defaultProfilePicture = 'https://res.cloudinary.com/dycqdhycj/image/upload/v1744885687/default-profile-picture_lrivmz.png'
+    
+    const tempStudent = studentTable.getElementsByClassName("student")[0];
+    
+    for (const [key, value] of Object.entries(students)) {
+        const clone = tempStudent.cloneNode(true);
+        const dynamicValues = clone.querySelectorAll('[class]')
+
+        for (const element of dynamicValues) {
+            let className = element.classList[0];
+            if(className == 'profile-img') {
+                element.src = value[className] || defaultProfilePicture;
+            } else {
+                element.innerHTML = value[className]
+            }
+        }
+
+        studentTable.appendChild(clone);
+    }
+
+    tempStudent.remove();
+
+    mainForm.hidden = true;
+    studentTable.hidden = false;
+    printBtn.hidden = false;
+
+}

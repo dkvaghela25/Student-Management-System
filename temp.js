@@ -6,7 +6,7 @@ const obj = {
     "emailID-1": "abc@gmail.com",
     "phoneNo-1": "9123456789",
     "branch-1": "Computer Science",
-    "Divison": "A",
+    "Divison-1": "A",
     "enrolmentNo-1": "ABC1",
     "fullName-2": "XYZ",
     "emailID-2": "xyz@gmail.com",
@@ -27,6 +27,9 @@ const dataObj = {}
 dataObj.fullName = obj.fullName
 dataObj.emailID = obj.emailID
 dataObj.totalStudents = obj.totalStudents
+dataObj.Students = {};
+
+const Students = dataObj.Students
 
 delete obj.fullName
 delete obj.emailID
@@ -34,7 +37,12 @@ delete obj.totalStudents
 
 
 for (let [key, value] of Object.entries(obj)) {
-    console.log(key);
-    key = key.split("-")[0]
-    console.log(key);
+    name = key.split("-")[0]
+    id = key.split("-")[1]
+    if(Students[`student-${id}`] === undefined){
+        Students[`student-${id}`] = {};
+    }
+    Students[`student-${id}`][name] = value;
 }
+
+console.log(dataObj);
